@@ -28,7 +28,7 @@ function preloadFrames() {
 
         // Dosya adını dinamik oluştur: 001, 002 ... 240
         const num = String(i).padStart(3, "0");
-        img.src = `${FRAME_PATH}ezgif-frame-${num}.jpg`;
+        img.src = `${FRAME_PATH}ezgif-frame-${num}.webp`;
 
         img.onload = () => {
             loadedCount++;
@@ -335,7 +335,7 @@ function populateProjects() {
     portfolioData.projects.forEach((project) => {
         // Kart HTML'i
         const imageSrc = project.image || `https://placehold.co/600x400/0a0a0a/06b6d4?text=${encodeURIComponent(project.title)}`;
-        
+
         const cardHTML = `
             <div class="project-card">
                 <span class="card-category">${project.category}</span>
@@ -524,15 +524,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const closeBtn = document.querySelector('.close-modal');
 
     // Dinamik oluşturulan proje kartlarındaki IMG tıklamalarını yakala
-    document.body.addEventListener('click', function(e) {
+    document.body.addEventListener('click', function (e) {
         if (e.target.tagName === 'IMG' && e.target.closest('.project-card')) {
             modal.classList.add('active');
             modalImg.src = e.target.src;
-            
+
             // GSAP ile Modal arkaplanı ve resim açılış animasyonu
             gsap.to(modal, { opacity: 1, duration: 0.3 });
-            gsap.fromTo(modalImg, 
-                { scale: 0.8, opacity: 0 }, 
+            gsap.fromTo(modalImg,
+                { scale: 0.8, opacity: 0 },
                 { scale: 1, opacity: 1, duration: 0.5, ease: "back.out(1.5)" }
             );
         }
@@ -540,19 +540,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Kapatma Fonksiyonu
     const closeModal = () => {
-        gsap.to(modal, { 
-            opacity: 0, 
-            duration: 0.3, 
+        gsap.to(modal, {
+            opacity: 0,
+            duration: 0.3,
             onComplete: () => {
                 modal.classList.remove('active');
                 modalImg.src = ""; // Sonraki açılışta eski resmi görmemek için temizle
-            } 
+            }
         });
     };
 
     // Kapat tuşuna veya resim dışındaki karanlık alana tıklayınca kapat
     closeBtn.addEventListener('click', closeModal);
-    modal.addEventListener('click', function(e) {
+    modal.addEventListener('click', function (e) {
         if (e.target === modal) {
             closeModal();
         }
@@ -566,7 +566,7 @@ const area = document.querySelector('.badge-interaction-area');
 const card = document.getElementById('id-card');
 const path = document.getElementById('lanyard-path');
 
-if(area && card && path) {
+if (area && card && path) {
     let rect = area.getBoundingClientRect();
     let isDragging = false;
 
@@ -591,7 +591,7 @@ if(area && card && path) {
     window.addEventListener('pointermove', (e) => {
         if (!isDragging) return;
         rect = area.getBoundingClientRect();
-        
+
         // Farenin container içindeki konumuna göre kartın YENİ X ve Y'sini belirle
         cardX = (e.clientX - rect.left) - offsetX + (cardWidth / 2);
         cardY = (e.clientY - rect.top) - offsetY;
@@ -601,7 +601,7 @@ if(area && card && path) {
     window.addEventListener('pointerup', () => {
         isDragging = false;
     });
-    
+
     window.addEventListener('resize', () => { rect = area.getBoundingClientRect(); });
 
     // FİZİK MOTORU VE ÇİZİM DÖNGÜSÜ
@@ -641,7 +641,7 @@ if(area && card && path) {
         // İpin üst bağlantı noktası
         let anchorX = rect.width / 2;
         let anchorY = -250;
-        
+
         // Bükülme noktası (Control Point)
         let cpX = (anchorX + cardX) / 2;
         let cpY = (anchorY + cardY) / 2;
