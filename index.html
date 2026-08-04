@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fahrettin Keş | Portfolio</title>
+
+    <!-- CSS Dosyamız -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Google Fonts (Siberpunk/HUD teması için Inter ve JetBrains Mono) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=JetBrains+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Yükleme Ekranı -->
+    <div id="loading-screen">
+        <div class="loading-inner">
+            <p class="loading-label">SYS.LOADING</p>
+            <span id="loading-percent">0%</span>
+            <div class="loading-bar-track">
+                <div class="loading-bar-fill" id="loading-bar-fill"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- HUD NAVBAR -->
+    <nav id="navbar" class="hud-navbar">
+        <!-- <div class="nav-logo">
+            <span class="logo-text">SYS.FK</span><span class="logo-dot">.</span>
+        </div> -->
+        <div class="nav-links">
+            <a href="#intro-section" class="nav-link"><span>[00]</span> GİRİŞ</a>
+            <a href="#about-section" class="nav-link"><span>[01]</span> HAKKIMDA</a>
+            <a href="#experience-section" class="nav-link"><span>[02]</span> DENEYİM</a>
+            <a href="#awards" class="nav-link"><span>[03]</span> BAŞARILAR</a>
+            <a href="#projects-section" class="nav-link"><span>[04]</span> PROJELER</a>
+            <a href="#contact-section" class="nav-link"><span>[05]</span> İLETİŞİM</a>
+        </div>
+        <div class="nav-socials">
+            <a href="https://www.linkedin.com/in/fahrettinkes" target="_blank" class="nav-social-btn">[ LINKEDIN ]</a>
+            <a href="https://github.com/Fahrettinkes" target="_blank" class="nav-social-btn">[ GITHUB ]</a>
+            <a href="https://medium.com/@fahrettinkes" target="_blank" class="nav-social-btn">[ MEDIUM ]</a>
+        </div>
+    </nav>
+
+    <!-- Sitenin tamamını kapsayan ana konteyner -->
+    <main id="app">
+
+        <!-- BÖLÜM 1: GİRİŞ EKRANI (Temiz karanlık arka plan + İsim/Unvan) -->
+        <section id="intro-section">
+            <div class="hero-split-layout">
+                <!-- SOL TARAF: İsim ve Ünvanlar -->
+                <div class="intro-text-left">
+                    <h1>FAHRETTİN KEŞ</h1>
+                    <h2>GÖMÜLÜ SİSTEMLER & OTONOM SİSTEM MİMARİLERİ</h2>
+
+                </div>
+
+                <!-- SAĞ TARAF: Sarkan Görevli Kartı Mekaniği -->
+                <div class="badge-interaction-area">
+                    <!-- Dinamik bükülen ip/kordon için SVG -->
+                    <svg id="lanyard-svg" class="lanyard-svg">
+                        <path id="lanyard-path" stroke="#222" stroke-width="12" fill="none" stroke-linecap="round" />
+                    </svg>
+
+                    <!-- Sürüklenebilir Görevli Kartı -->
+                    <div id="id-card" class="id-card-content">
+                        <div class="card-clip"></div> <!-- Kordonun karta bağlandığı klips -->
+
+                        <div class="card-header">
+                            <span class="org-name">SYS.FK</span>
+                            <span class="access-level">LVL:05</span>
+                        </div>
+
+                        <div class="card-photo-container">
+                            <!-- src kısmına kendi fotoğrafının linkini koyacaksın -->
+                            <img src="assets/images/projects/pp.jpg" alt="Profile" class="card-photo">
+                            <div class="photo-corners"></div>
+                        </div>
+
+                        <div class="card-info">
+                            <div class="info-group">
+                                <label>ID / IDENTIFIER</label>
+                                <div class="value name-value">FAHRETTİN KEŞ</div>
+                            </div>
+                            <div class="info-group">
+                                <label>ROLE</label>
+                                <div class="value">EMBEDDED SYSTEMS ENGINEER</div>
+                            </div>
+                        </div>
+
+                        <div class="card-barcode">
+                            <!-- Sadece CSS ile barkod görünümü vereceğimiz divler -->
+                            <div class="bars"></div>
+                            <span class="barcode-numbers">SYS-AUTH-FK-992</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BÖLÜM 2: CANVAS BÖLÜMÜ (Scroll ile ortaya çıkacak) -->
+        <section id="canvas-section">
+            <div class="canvas-container">
+                <canvas id="hero-canvas"></canvas>
+            </div>
+        </section>
+
+        <!-- BÖLÜM 3: HAKKIMDA & YETENEK AĞACI -->
+        <section id="about-section" class="section-container">
+            <div class="about-grid">
+                <!-- Sol Sütun: Biyografi -->
+                <div class="about-text">
+                    <p class="hud-text">SYS.PROFILE</p>
+                    <h2 class="section-title">HAKKIMDA</h2>
+                    <p class="about-bio"></p>
+                </div>
+                <!-- Sağ Sütun: Yetenek Kartları -->
+                <div class="tech-stack"></div>
+            </div>
+        </section>
+
+        <!-- BÖLÜM 4: DENEYİM  -->
+        <section id="experience-section" class="section-container">
+            <h2 class="section-title">Deneyim</h2>
+            <div id="experiences-list" class="experience-timeline"></div>
+        </section>
+
+        <!-- BÖLÜM 5.5: BAŞARILAR (YENİ) -->
+        <section id="awards" class="section-container">
+            <h2 class="section-title">BAŞARILAR</h2>
+
+            <div class="awards-log-container">
+                <ul class="system-log-list">
+                    <!-- 1. Ödül -->
+                    <li class="log-entry gold">
+                        <span class="log-rank">[ 01_WIN ]</span>
+                        <span class="log-title">HKU Game Jam Birincilik Ödülü</span>
+                        <span class="log-connector"></span>
+                        <span class="log-desc">Task Force 241 | Unity</span>
+                    </li>
+
+                    <!-- 2. Ödül -->
+                    <li class="log-entry bronze">
+                        <span class="log-rank">[ 03_WIN ]</span>
+                        <span class="log-title">HKU Game Jam Üçüncülük Ödülü</span>
+                        <span class="log-connector"></span>
+                        <span class="log-desc">Eternals | Unity</span>
+                    </li>
+
+                    <!-- 3. Ödül -->
+                    <li class="log-entry gold">
+                        <span class="log-rank">[ 01_WIN ]</span>
+                        <span class="log-title">Gelecek Nesil Bilim Turnuvası Birincilik</span>
+                        <span class="log-connector"></span>
+                        <span class="log-desc">LEGO Fatihleri | 3D Tasarım</span>
+                    </li>
+
+                    <!-- 4. Ödül -->
+                    <li class="log-entry gold">
+                        <span class="log-rank">[ 01_WIN ]</span>
+                        <span class="log-title">Gelecek Nesil Bilim Turnuvası Birincilik</span>
+                        <span class="log-connector"></span>
+                        <span class="log-desc">LEGO Fatihleri | Robot Stratejisi</span>
+                    </li>
+
+                    <!-- 5. Ödül -->
+                    <li class="log-entry silver">
+                        <span class="log-rank">[ 02_WIN ]</span>
+                        <span class="log-title">First Lego League Bölge İkincilik</span>
+                        <span class="log-connector"></span>
+                        <span class="log-desc">LEGO Fatihleri | Öz Değerler</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- BÖLÜM 5: PROJELER -->
+        <section id="projects-section" class="section-container">
+            <p class="hud-text">SYS.PROJECTS</p>
+            <h2 class="section-title">Öne Çıkan Projeler</h2>
+            <div id="projects-grid" class="projects-grid"></div>
+        </section>
+
+
+
+        <!-- BÖLÜM 6: İLETİŞİM (YENİ) -->
+        <section id="contact-section" class="section-container">
+            <h2 class="section-title">İletişim Kur</h2>
+            <form id="contact-form" class="contact-form">
+                <input type="text" name="user_name" placeholder="Adınız Soyadınız" class="form-input" required>
+                <input type="email" name="user_email" placeholder="E-posta Adresiniz" class="form-input" required>
+                <textarea name="message" rows="5" placeholder="Mesajınız..." class="form-input" required></textarea>
+                <button type="submit" id="submit-btn" class="form-btn">GÖNDER</button>
+            </form>
+            <div id="form-status" class="form-status"></div>
+        </section>
+
+    </main>
+
+    <!-- GSAP ve ScrollTrigger (Animasyon Motoru) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
+
+    <!-- EmailJS Kütüphanesi -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+    <!-- Veri Dosyası (main.js'den ÖNCE yüklenmeli) -->
+    <script src="js/data.js"></script>
+    <!-- Kendi JS Dosyamız (En alta eklenir ki HTML yüklendikten sonra çalışsın) -->
+    <script src="js/main.js"></script>
+
+    <!-- Image Modal (Lightbox) -->
+    <div id="image-modal" class="hud-modal">
+        <span class="close-modal">[ X ] KAPAT</span>
+        <img id="modal-image" src="" alt="Büyük Görsel">
+    </div>
+</body>
+
+</html>
